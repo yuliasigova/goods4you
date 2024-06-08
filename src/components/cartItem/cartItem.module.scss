@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+
+    a {
+        display: flex;
+        margin-right: 10px;
+        width: 100px;
+        height: 57px;
+    }
+
+    h3 {
+        font-weight: 600;
+        font-size: inherit;
+    }
+
+    p {
+        font-size: 1.125rem;
+    }
+}
+
+.button {
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 20.23px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    color: $color-mischka;
+    align-items: center;
+}

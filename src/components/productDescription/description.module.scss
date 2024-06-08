@@ -1,0 +1,74 @@
+@import '../../styles/variables.scss';
+
+.description {
+    flex: 1 1 440px;
+    display: flex;
+    flex-direction: column;
+
+    dl {
+        margin: 0;
+    }
+
+    dt {
+        font-size: inherit;
+        font-weight: 600;
+        line-height: 1.445;
+        color: $color-mischka;
+        margin-right: 10px;
+    }
+
+    dd {
+        font-size: inherit;
+        margin: 0;
+        line-height: 1.445;
+        font-weight: 600;
+    }
+
+    button {
+        align-self: flex-start;
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    dl {
+        display: flex;
+        justify-content: space-between;  
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    flex-grow: 1;
+    padding: 3em 0 1em;
+
+    .info {
+        display: flex; 
+    }
+}
+
+.rating {
+    width: 116px;
+    height: 20px;
+    position: relative;
+    display: block;
+
+    &::before {
+        width: 116px;
+        background-size: 116px 20px;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        background: url(../../shared/assets/img/star.svg) transparent no-repeat center;
+    }
+}

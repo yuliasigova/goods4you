@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+
+.description {
+    background: $color-dark-slate-blue;
+    min-height: 464px;
+    padding: 0 max(20px, (100vw - 1180px)/2);
+    color: $color-default-white;
+}
+
+.wrapper {
+    border-top: 1px solid $color-default-white--50;
+    height: auto;
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+}
+  
+.title {
+    font-size: 2.25em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    width: min(100%, 25ch)
+}
+
+.text {
+    font-weight: 600;
+    margin-bottom: 40px;
+    width: min(100%, 32ch)
+}
+
+.img {
+    position: absolute;
+    bottom: -19px;
+    left: 43px;
+    z-index: -1;
+    img {
+        object-fit: contain;
+    }
+}

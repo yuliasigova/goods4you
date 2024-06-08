@@ -1,0 +1,28 @@
+$color-default-black:               #000000;
+$color-default-white:               #ffffff;
+$color-dark-slate-blue:             #484283;
+$color-sunset-orange:               #f14f4f;
+$color-mandarian-orange:            #8c2828;
+$color-tuna:                        #444b58;
+$color-white-smoke:                 #f6f6f6;
+$color-mischka:                     #b2b5bb;
+$color-silver:                      #c4c4c4;
+$color-gainsboro:                   #d9d9d9;
+
+$color-default-white--50:            rgba(255, 255, 255, 0.5);
+$color-grey--25:                     rgba(135, 135, 135, 0.25);
+
+$fz-default:                        1rem;
+$ff-jost:                           "Jost", "Arial", sans-serif;
+
+$vp-320:                            320px;
+$vp-768:                            767px;
+$vp-1024:                           1023px;
+$vp-1296:                           1296px;
+$vp-1440:                           1440px;
+$vp-1920:                           1920px;
+
+$tf-default:                        ease;
+$trans-default:                     0.3s $tf-default;
+$trans-ease:                        0.5s ease-in;
+$trans-ease-out:                        0.3s ease-in-out

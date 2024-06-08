@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.catalog {
+    padding: 54px max(20px, (100vw - 1180px)/2) 59px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $vp-1024) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+.title {
+    font-weight: 700;
+    font-size: 1.875em;
+    margin-bottom: 43px;
+
+    @media (max-width: $vp-1024) {
+        margin-bottom: 30px;
+    } 
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    place-content: center;
+    margin-bottom: 55px;
+
+    @media (max-width: $vp-1024) {
+        padding-top: 30px;
+    }
+
+    li {
+        width: min(100%, 370px);
+        margin-bottom: 5px;
+    }
+}
+

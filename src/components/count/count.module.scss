@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.count {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
+    span {
+        display: grid;
+        place-items: center;
+        width: 62px;
+        height: 48px;
+        border-radius: 4px;
+        color: inherit;
+        background-color: $color-white-smoke;
+    }
+}
