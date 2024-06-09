@@ -1,16 +1,17 @@
 import { IconButton } from "../../ui/IconButton/IconButton"
-import { Icon } from "../../ui/icon/Icon"
 import style from './count.module.scss'
+import IconMinus  from '../../shared/assets/svg/minus.svg?react'
+import IconPlus  from '../../shared/assets/svg/plus.svg?react'
 
 export const Count = () => {
     return (
         <div className={style.count}>
             <IconButton>
-                <Icon name={'minus'} width={18} height={3}/>
+                <IconMinus/>
             </IconButton>
             <span>1</span>
             <IconButton>
-            <Icon name={'plus'} width={18} height={18}/>
+            <IconPlus/>
             </IconButton>
         </div>
     )

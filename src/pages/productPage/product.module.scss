@@ -1,7 +1,7 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 .product {
-    padding: 55px max(20px, (100vw - 1180px)/2);
+    padding: 55px max(20px, (100vw - 1180px)/2) 111px;
 
     @media (max-width: $vp-1024) {
         padding-top: 30px;
@@ -9,7 +9,6 @@
 }
 
 .text {
-    margin: 0;
     font-weight: 700;
     font-size: 1.875em;
     margin-bottom: 55px;
@@ -22,6 +21,6 @@
 .wrapper {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 43px;
+    gap: 43px;
     justify-content: center;
 }

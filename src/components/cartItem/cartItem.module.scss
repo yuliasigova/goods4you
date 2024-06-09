@@ -1,8 +1,10 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 .cartItem {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .wrapper {
@@ -17,13 +19,20 @@
         height: 57px;
     }
 
-    h3 {
+    h2 {
         font-weight: 600;
         font-size: inherit;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
     }
 
     p {
         font-size: 1.125rem;
+        cursor: pointer;
     }
 }
 
@@ -39,4 +48,9 @@
     font-weight: inherit;
     color: $color-mischka;
     align-items: center;
+
+    &:hover,
+    &:focus {
+            text-decoration: underline;
+        }
 }

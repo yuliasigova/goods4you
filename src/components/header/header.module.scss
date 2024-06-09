@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 .header {
     background: $color-dark-slate-blue;
@@ -23,9 +23,14 @@
         min-height: 64px;
     }   
 
-    a:hover img,
     a:focus img {
         opacity: 0.8;
+    }
+
+    @media (hover: hover) {
+        a:hover img {
+            opacity: 0.8;
+        }
     }
 }
 
@@ -63,12 +68,12 @@
         font-weight: 600;
         color: inherit;
         display: flex;
+        transition: color $trans-default;
 
         &:focus, 
         &:hover {
             color: $color-silver;
-            text-decoration: underline;
-            transition: color $trans-default;
+            text-decoration: underline; 
         }
     } 
 

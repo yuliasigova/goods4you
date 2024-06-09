@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 
 .description {
@@ -12,8 +12,11 @@
     border-top: 1px solid $color-default-white--50;
     height: auto;
     padding-top: 100px;
-    position: relative;
-    z-index: 1;
+    padding-bottom: 21px;
+    background-image: url('../../shared/assets/img/background.png');
+    background-repeat: no-repeat;
+    background-position-x: 36px;
+    background-position-y: bottom;
 }
   
 .title {
@@ -25,16 +28,6 @@
 
 .text {
     font-weight: 600;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
     width: min(100%, 32ch)
-}
-
-.img {
-    position: absolute;
-    bottom: -19px;
-    left: 43px;
-    z-index: -1;
-    img {
-        object-fit: contain;
-    }
 }

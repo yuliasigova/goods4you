@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 .footer {
     padding: 18px max(20px, (100vw - 1180px)/2) 19px;
@@ -10,9 +10,14 @@
     gap: 2px;
     justify-content: space-between;
     min-height: 80px;
-    
-    a:hover img,
+
     a:focus img {
         opacity: 0.8;
+    }
+
+    @media (hover: hover) {
+        a:hover img {
+            opacity: 0.8;
+        }
     }
 }

@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../app/styles/variables.module.scss';
 
 .faq {
     padding: 35px max(20px, (100vw - 1180px)/2) 123px;
@@ -44,8 +44,7 @@
         }
 
         svg {
-            transform: rotate(45deg);
-            transition: transform $trans-default;
+          
         }
     }
 }
@@ -62,19 +61,25 @@
     height: 0;
     will-change: margin, opacity, height;
     transition: margin $trans-ease-out, opacity $trans-ease-out, height $trans-ease-out;  
+   
 }
 
-.detailsActive {
-    @extend .details;
-    .content {
-        margin: 16px 0 20px;
-        opacity: 1;
-        height: 100%; 
-    }
-
-    button svg {
-        transition: transform $trans-default;
-        transform: rotate(90deg);
-    }
+.contentActive {
+    margin: 16px 0 20px;
+    opacity: 1;
+    height: 100%; 
+    transition: margin $trans-ease-out, opacity $trans-ease-out, height $trans-ease-out; 
+    will-change: margin, opacity, height;
+    
 }
+
+.svg {
+    transform: rotate(45deg);
+    transition: transform $trans-default;
+}
+
+.svgActive {
+    transform: rotate(90deg);
+}
+
 

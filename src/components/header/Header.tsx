@@ -1,7 +1,7 @@
 import logo from '../../shared/assets/img/logo.svg'
 import style from './header.module.scss'
 import { useLocation, Link } from 'react-router-dom'
-import { Icon } from '../../ui/icon/Icon'
+import CartIcon  from '../../shared/assets/svg/cart.svg?react'
 
 
 export const Header = () => {
@@ -27,7 +27,7 @@ export const Header = () => {
                 <li>
                     <Link to={'cart'} className={style.link}> Cart
                     <div className={style.cart}>
-                        <Icon name={'cart'} width={20} height={18}/>
+                        <CartIcon/>
                         <span>1</span>
                     </div>
                     </Link>

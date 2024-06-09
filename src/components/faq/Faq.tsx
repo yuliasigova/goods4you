@@ -1,6 +1,6 @@
 import style from './faq.module.scss'
 import { useState } from 'react'
-import { Icon } from '../../ui/icon/Icon'
+import IconClose from '../../shared/assets/svg/close.svg?react'
 
 const faq = [
     {
@@ -15,7 +15,7 @@ const faq = [
 ]
 
 export const Faq = () => {
-    const [openQuestion, setOpenQuestion] = useState<number[]>([])
+    const [openQuestion, setOpenQuestion] = useState<number[]>([1])
 
     const handleClick = (i:number) => {
         if (openQuestion.includes(i)) {
@@ -29,13 +29,14 @@ export const Faq = () => {
               <div className={style.accordion}>
             <h2>FAQ</h2>
             {faq.map(item => 
-                <div className={openQuestion.includes(item.id) ? style.detailsActive : style.details} 
+                <div className={style.details} 
                 tabIndex={0} 
                 key={item.id} onClick={() => handleClick(item.id)}>
                 <h3 className={style.title}> {item.title}</h3>
-                <p className={style.content}> {item.content} </p>
-                <button>
-                    <Icon name='close' width={25} height={25}></Icon>
+                <p className={openQuestion.includes(item.id)? style.contentActive : style.content}> 
+                {item.content} </p>
+                <button type={'button'} aria-label={"открыть или закрыть описание"}>
+                    <IconClose className={openQuestion.includes(item.id) ? style.svgActive : style.svg} />
                 </button>
             </div>
             )}

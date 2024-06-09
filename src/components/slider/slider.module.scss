@@ -1,42 +1,43 @@
-@import '../../index.scss';
+@import '../../app/styles/variables.module.scss';
 
 .slider {
     width: min(100%, 520px);
 }
 
 .wrapper {
-    margin-bottom: 20px
+    margin-bottom: 13px
 }
 
 .list {
     width: min(100%, 520px);
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     min-height: 79px;
-    // overflow: scroll;  
-    // scrollbar-width: none;
 }
 
 .item {
     display: flex;
     width: 70px;
     height: 75px;
-    margin-right: 20px;
     flex-shrink: 0;
     border-radius: 4px;
     cursor: pointer;
     border-radius: 4px;
 
-    &:last-child {
-        margin-right: 0;
-    }
-
     img {
         border-radius: 4px;
+        width: 70px;
         height: 75px;
     }
 
     &:focus, 
-    &:hover img {
-        border: 3px solid $color-silver;
+    &:hover {
+        outline: 3px solid $color-silver;
+    }
+
+    .itemActive {
+        @extend .item;
+        outline: 3px solid $color-silver;
     }
 }
