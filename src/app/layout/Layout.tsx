@@ -4,11 +4,11 @@ import { Footer } from "../../components/footer/Footer";
 
 export const Layout = ()=> {
     return (
-        <div className="page">
+        <>
            <Header/>
            <Outlet/>
            <Footer/>
-        </div>
+        </>
      
     )
 }

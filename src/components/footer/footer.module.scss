@@ -1,6 +1,18 @@
+@import '../../styles/variables.scss';
+
 .footer {
-    // min-height: 80px;
     padding: 18px max(20px, (100vw - 1180px)/2) 19px;
-    background: #444B58;
-    flex-shrink: 0;
+    background: $color-tuna;
+    color: $color-default-white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    justify-content: space-between;
+    min-height: 80px;
+    
+    a:hover img,
+    a:focus img {
+        opacity: 0.8;
+    }
 }
