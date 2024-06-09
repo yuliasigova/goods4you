@@ -40,8 +40,6 @@ export const Faq = () => {
                 </button>
             </div>
             )}
-            
-            
             </div>
            
         </section>

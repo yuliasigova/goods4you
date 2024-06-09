@@ -6,7 +6,7 @@ import CartIcon  from '../../shared/assets/svg/cart.svg?react'
 
 export const Header = () => {
     const location = useLocation();
- 
+
     return (
         <header className={location.pathname !== '/' ? style.header : style.header__home}>
           {location.pathname !== '/' 
@@ -19,10 +19,10 @@ export const Header = () => {
             <nav className={style.nav}>
             <ul >
                 <li>
-                    <Link to={'/'}>Catalog</Link>
+                    <Link to={'/#catalog'}>Catalog</Link>
                 </li>
                 <li>
-                    <Link to={'/'}> FAQ</Link>
+                    <Link to={'/#faq'}> FAQ</Link>
                 </li>
                 <li>
                     <Link to={'cart'} className={style.link}> Cart

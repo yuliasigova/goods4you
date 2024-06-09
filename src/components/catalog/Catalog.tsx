@@ -3,6 +3,7 @@ import style from './catalog.module.scss'
 import { Button } from "../../ui/button/Button"
 import { InputSearch } from '../../ui/inputSearch/InputSearch'
 
+
 export const Catalog = () => {
     return (
         <section className={style.catalog} id={'catalog'}>

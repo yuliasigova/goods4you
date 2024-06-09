@@ -17,10 +17,10 @@ export const Footer = () => {
           <div className={nav.nav}>
           <ul>
                 <li>
-                    <Link to={'/'}>Catalog</Link>
+                    <Link to={'/#catalog'}>Catalog</Link>
                 </li>
                 <li>
-                    <Link to={'/'}>FAQ</Link>
+                    <Link to={'/#faq'}>FAQ</Link>
                 </li>
             </ul>
           </div>

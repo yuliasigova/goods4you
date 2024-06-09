@@ -10,8 +10,8 @@ export const Slider = () => {
             </div>
 
             <ul className={style.list}>
-            {imageList.map(image => 
-            <li className={style.item} key={image} tabIndex={0}>
+            {imageList.map((image, _i) => 
+            <li className={style.item} key={_i} tabIndex={0}>
                 <img src={image} width={70} height={75} alt=''></img>
                 </li> )}
             </ul>
