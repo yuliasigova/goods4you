@@ -1,6 +1,6 @@
 import product from '../../shared/assets/img/product.jpg'
 import { Link } from 'react-router-dom'
-import { Count } from '../count/Count';
+import { Count } from '../../molecules/Count/Count';
 import style from './cartItem.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../atoms/Button/Button';

@@ -10,8 +10,25 @@
         place-items: center;
         width: 62px;
         height: 48px;
+        font-size: 14px;
         border-radius: 4px;
         color: inherit;
         background-color: $color-white-smoke;
+    }
+}
+
+.countLarge {
+    @extend .count;
+    gap: 15px;
+
+    button {
+        width: 67px;
+        height: 67px;
+    }
+
+    span {
+        width: 106px;
+        height: 67px; 
+        font-size: 1rem;
     }
 }
