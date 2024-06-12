@@ -1,6 +1,7 @@
 import style from './faq.module.scss'
 import { useState } from 'react'
 import IconClose from '../../shared/assets/svg/close.svg?react'
+import { IconButton } from '../../ui/IconButton/IconButton'
 
 const faq = [
     {
@@ -35,9 +36,10 @@ export const Faq = () => {
                 <h3 className={style.title}> {item.title}</h3>
                 <p className={openQuestion.includes(item.id)? style.contentActive : style.content}> 
                 {item.content} </p>
-                <button type={'button'} aria-label={"открыть или закрыть описание"}>
-                    <IconClose className={openQuestion.includes(item.id) ? style.svgActive : style.svg} />
-                </button>
+             < IconButton primary={false}  
+             aria={'Открыть или закрыть описание'}>
+             <IconClose className={openQuestion.includes(item.id) ? style.svgActive : style.svg} />
+             </IconButton>
             </div>
             )}
             </div>

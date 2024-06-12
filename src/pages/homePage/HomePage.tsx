@@ -1,5 +1,5 @@
 import style from '../homePage/home.module.scss'
-import { Button } from "../../ui/button/Button"
+import { Button } from '../../atoms/Button/Button'
 import { Catalog } from '../../components/catalog/Catalog'
 import { Faq } from '../../components/faq/Faq'
 

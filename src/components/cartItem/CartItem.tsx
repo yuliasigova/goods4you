@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Count } from '../count/Count';
 import style from './cartItem.module.scss'
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../atoms/Button/Button';
 
 export const CartItem = () => {
     const id = 1;
@@ -23,7 +24,7 @@ export const CartItem = () => {
             </div> 
             </div>
             <Count/>
-            <button className={style.button}>Delete</button>
+            <Button primary={false}>Delete</Button>
         </article>
     )
 }

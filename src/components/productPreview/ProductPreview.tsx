@@ -1,7 +1,7 @@
 import product from '../../shared/assets/img/product.jpg'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-import { IconButton } from '../../ui/IconButton/IconButton';
+import { IconButton } from '../../ui/IconButton/IconButton'
 import style from './preview.module.scss'
 import { Count } from '../count/Count';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,7 @@ export const ProductPreview = () => {
             </div>
 
             {isCart ? <Count/> : 
-             <IconButton onClick={handleButtonClick}>
+             <IconButton aria={"Добавить товар в корзину"} onClick={handleButtonClick}>
                 <CartIcon/>
          </IconButton>}
            </div>

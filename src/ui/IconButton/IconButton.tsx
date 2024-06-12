@@ -1,14 +1,17 @@
-import style from './button.module.scss'
+import style from './IconButton.module.scss'
 
 interface Button  {
-    children: React.ReactElement,
+    primary?: boolean,
+    aria: string
+    children: React.ReactElement
     onClick?: () => void,
 }
 
-export const IconButton = ({children, onClick}: Button) => {
+export const IconButton = ({primary=true, aria, children, onClick}: Button) => {
+    const mode = primary ? style.iconButton : style.iconButtonSecond
     return (
-        <button className={style.button}
-        type={'button'}
+        <button className={mode}
+        type={'button'} aria-label={aria}
         onClick={onClick}>
             {children}
         </button>

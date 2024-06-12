@@ -1,18 +1,7 @@
 import style from './description.module.scss';
-import { Button } from '../../ui/button/Button';
+import { Button } from '../../atoms/Button/Button';
+import { ProductDetails } from '../../shared/types/ProductDetails';
 
-interface ProductDetails {
-  name: string,
-  skuId: string,
-  rating: number,
-  basePrice: number,
-  discount: number,
-  discountPrice: number,
-  stock: number,
-  brand: string,
-  category: string,
-  description: string,
-}
 
 const initialState:ProductDetails = {
   name: 'Puma Force 1 Shadow',
