@@ -63,6 +63,7 @@
     height: 20px;
     position: relative;
     display: block;
+    overflow: hidden;
 
     &::before {
         width: 116px;

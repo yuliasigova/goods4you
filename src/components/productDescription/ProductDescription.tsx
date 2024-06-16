@@ -1,52 +1,56 @@
 import style from './description.module.scss';
 import { Button } from '../../atoms/Button/Button';
-import { ProductDetails } from '../../shared/types/ProductDetails';
+import { IProductDetails } from '../../shared/types/ProductTypes';
+import { discountPrice } from '../../shared/utils/price';
+import { getRating } from '../../shared/utils/rating';
+import { useQuantity } from '../../shared/hooks/useQuantity';
+import { Count } from '../../molecules/Count/Count';
+import { useState } from 'react';
 
-
-const initialState:ProductDetails = {
-  name: 'Puma Force 1 Shadow',
-  skuId: '0005',
-  rating: 5,
-  basePrice: 500,
-  discount: 10,
-  discountPrice: 450,
-  stock: 13,
-  brand: 'Puma',
-  category: 'Smartphones',
-  description: 'An apple mobile which is nothing like apple',
-
+type ProductDescriptionProp = {
+  product: IProductDetails
 }
 
-export const ProductDescription = () => {
-  const {name, skuId,  basePrice, discount, discountPrice, stock, brand, category, description} = initialState
+export const ProductDescription = ({product}:ProductDescriptionProp) => {
+  const {id, title, sku,  rating, price, discountPercentage,  stock, brand, category, description} = product
+  const { isVisual, value} = useQuantity(id)
+  const [isCart, setIsCart] = useState(isVisual)
+  const [count, setCount] = useState(value)
+
+  const priceWithDiscount = discountPrice(price, discountPercentage)
+
+  const handleButtonClick = () => {
+    setIsCart(!isCart)
+    setCount(1)
+}
   return (
     <div className={style.description}>
         <div className={style.wrapper}>
-            <h1>{name}</h1>
+            <h1>{title}</h1>
             <dl>
                 <dt>SKU ID</dt>
-                <dd>{skuId}</dd>
+                <dd>{sku}</dd>
             </dl>
         </div>
 
         <dl className={style.content}>
           <div className={style.info}>
             <dt>Rating</dt>
-            <dd className={style.rating}></dd>
+            <dd className={style.rating} style={{width: `${getRating(rating)}px`}}></dd>
           </div>
           <div className={style.info}>
             <dt>Base price</dt>
-            <dd>{basePrice}$</dd>
+            <dd>{price}$</dd>
           </div>
       
           <div className={style.info}>
             <dt>Discount percentage</dt>
-            <dd>{discount}%</dd>
+            <dd>{discountPercentage}%</dd>
           </div>
         
           <div className={style.info}>
             <dt>Discount price</dt>
-            <dd>{discountPrice}$</dd>
+            <dd>{priceWithDiscount}$</dd>
           </div>
 
           <div className={style.info}>
@@ -69,7 +73,12 @@ export const ProductDescription = () => {
             <dd>{description}</dd>
           </div>
         </dl>
-          <Button>Add to cart</Button>
+
+        {isCart ? <Count primary = {false} quantity = {count}/> : 
+             
+                <Button onClick={handleButtonClick}>Add to cart</Button>
+        }
+        
     </div>
   )
 }

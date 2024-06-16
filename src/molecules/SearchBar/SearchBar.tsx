@@ -1,12 +1,21 @@
 import { Button } from '../../atoms/Button/Button'
 import style from './SearchBar.module.scss'
 import { Input } from "../../atoms/Input/Input"
+import { ChangeEvent} from 'react'
 
-export const SearchBar = () => {
+
+interface ISearchBar {
+    value: string,
+    onChange: (evt:ChangeEvent<HTMLInputElement>) => void,
+    onClick: () => void
+}
+
+export const SearchBar = ({value, onChange, onClick}: ISearchBar) => {
+   
     return (
         <div className={style.searchBar}>
-        <Input/>
-        <Button>Search</Button>
+        <Input  value={value} onChange={onChange}/>
+        <Button onClick={onClick}> Search</Button>
         </div>
     )
 }

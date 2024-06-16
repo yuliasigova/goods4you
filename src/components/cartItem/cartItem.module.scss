@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     margin-right: 1rem;
+    width: min(100%, 362px);
 
     a {
         display: flex;
@@ -34,5 +35,11 @@
         font-size: 1.125rem;
         cursor: pointer;
     }
+
+    img {
+        object-fit: cover;
+        object-position: center;
+    }
+
 
 }

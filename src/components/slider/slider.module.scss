@@ -35,9 +35,9 @@
     &:hover {
         outline: 3px solid $color-silver;
     }
+}
 
-    .itemActive {
-        @extend .item;
-        outline: 3px solid $color-silver;
-    }
+.itemActive {
+    @extend .item;
+    outline: 3px solid $color-silver;
 }

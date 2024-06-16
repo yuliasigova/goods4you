@@ -2,20 +2,24 @@ import logo from '../../shared/assets/img/logo.svg'
 import style from './header.module.scss'
 import { useLocation, Link } from 'react-router-dom'
 import CartIcon  from '../../shared/assets/svg/cart.svg?react'
-
+import { selectTotal } from '../../shared/slice/CartSlice'
+import { useSelector } from 'react-redux'
 
 export const Header = () => {
     const location = useLocation();
+    const userId = 23
+    const total = useSelector(selectTotal)
+
+    const isTotalValue = total > 0 ? 1 : 0
 
     return (
-        <header className={location.pathname !== '/' ? style.header : style.header__home}>
+        <header className={location.pathname !== '/' ? style.header : style.headerHome}>
           {location.pathname !== '/' 
           ? <Link to={'/'}>  
           <img src={logo} width={162} height={40} alt="Логотип: Goods4you"></img>
           </Link>
           : <img src={logo} width={162} height={40} alt="Логотип: Goods4you"></img>
           }
-           
             <nav className={style.nav}>
             <ul >
                 <li>
@@ -28,7 +32,7 @@ export const Header = () => {
                     <Link to={'cart'} className={style.link}> Cart
                     <div className={style.cart}>
                         <CartIcon/>
-                        <span>1</span>
+                        {userId && isTotalValue ? <span>{total}</span> : <></> }
                     </div>
                     </Link>
                 </li>

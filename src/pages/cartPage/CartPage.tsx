@@ -1,34 +1,56 @@
 import style from './cart.module.scss'
 import { CartItem } from '../../components/cartItem/CartItem'
+import { IProductDetails } from '../../shared/types/ProductTypes'
+import { selectCart } from '../../shared/slice/CartSlice'
+import { useSelector } from 'react-redux'
+import { useGetCartByUserQuery } from '../../shared/api/goodsApi'
 
 export const CartPage = () => {
+    const cart = useSelector(selectCart)
+    const products:Array<IProductDetails> = cart.products 
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const {data, isLoading, isError} = useGetCartByUserQuery(23)
+
+
+    if (isLoading) {
+        return (
+            <main className={style.cart}>
+              <p className={style.title}>Loading...</p>   
+            </main>
+       )
+    }
+
+    if (isError) {
+        return (
+            <main className={style.cart}>
+              <p className={style.title}>Something went wrong</p>   
+            </main>
+       )
+    }
     return (
         <main className={style.cart}>
-            <h1>My cart</h1>
+            <h1 className={style.title}>My cart</h1>
             <section className={style.wrapper}>
                 <ul className={style.list}>
-                    <li> 
-                        <CartItem/>
-                    </li>
-                    <li> 
-                        <CartItem/>
-                    </li>
-                    <li> 
-                        <CartItem/>
-                    </li>
+                    {products?.map(item => 
+                         <li key={item.id}> 
+                         <CartItem product={item}/>
+                     </li>
+                    )}
                 </ul>
                 <div className={style.total}>
                     <div className={style.count}>
                         <p>Total count:</p>
-                        <span>3</span>
+                        <span>{cart.totalQuantity}</span>
                     </div>
                     <div className={style.price}>
                         <p>Total price:</p>
-                        <span>700$</span>
+                        <span>{cart.total}$</span>
                     </div>
                     <div className={style.discount}>
                         <p>Total price with discount:</p>
-                        <span>590$</span>
+                        <span>{cart.discountedTotal}$</span>
                     </div> 
                 </div>
             </section>
