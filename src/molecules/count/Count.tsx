@@ -1,4 +1,4 @@
-import { IconButton } from '../../ui/IconButton/IconButton'
+import { IconButton } from '../../atoms/IconButton/IconButton'
 import style from './Count.module.scss'
 import IconMinus  from '../../shared/assets/svg/minus.svg?react'
 import IconPlus  from '../../shared/assets/svg/plus.svg?react'

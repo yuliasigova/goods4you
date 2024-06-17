@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-import { IconButton } from '../../ui/IconButton/IconButton'
+import { IconButton } from '../../atoms/IconButton/IconButton'
 import style from './preview.module.scss'
 import { Count } from '../../molecules/Count/Count';
 import { useNavigate } from 'react-router-dom';

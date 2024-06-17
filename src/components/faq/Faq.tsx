@@ -1,7 +1,7 @@
 import style from './faq.module.scss'
 import { useState } from 'react'
 import IconClose from '../../shared/assets/svg/close.svg?react'
-import { IconButton } from '../../ui/IconButton/IconButton'
+import { IconButton } from '../../atoms/IconButton/IconButton'
 
 const faq = [
     {
