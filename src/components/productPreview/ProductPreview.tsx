@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CartIcon  from '../../shared/assets/svg/cart.svg?react'
 import { IProductDetails } from '../../shared/types/ProductTypes';
 import { useQuantity } from '../../shared/hooks/useQuantity';
+import { useUpdateCartMutation } from '../../shared/api/goodsApi';
 
 type  ProductPreviewProps = {
     product: IProductDetails;
@@ -17,13 +18,29 @@ export const ProductPreview = ({product}:ProductPreviewProps ) => {
     const { isVisual, value} = useQuantity(id)
     const [isCart, setIsCart] = useState(isVisual)
     const [count, setCount] = useState(value)
-
+    const dataCart = {
+        merge: true,
+        products: [
+            {id: id,
+            quantity: 1
+            }
+        ]
+    }
+    const [updateCart, {data}] = useUpdateCartMutation()
+    
+    console.log(data)
    
+    const req = async() => {
+        await updateCart({id: 8, data: dataCart})
+    }
+
+
     const navigate = useNavigate()
    
     const handleButtonClick = () => {
         setIsCart(!isCart)
         setCount(1)
+        req()
     }
 
     return (

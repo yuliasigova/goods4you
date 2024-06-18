@@ -10,6 +10,9 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        addCount: () => {
+            
+        }
         
     },
     extraReducers: (builder) => {
@@ -18,6 +21,11 @@ export const cartSlice = createSlice({
             (state, action) => {
                 state.carts = action.payload.carts[0]}
           );
+          builder.addMatcher(
+            isAnyOf(goodsApi.endpoints.updateCart.matchFulfilled), 
+            (state, {payload}) => {
+                state.carts.products = [...state.carts.products, payload.products.at(-1)]
+    });
     },
     selectors: {
         selectProduct: state => state.carts.products,

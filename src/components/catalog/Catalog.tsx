@@ -70,7 +70,7 @@ export const Catalog = () => {
         </ul>}
         
 
-       {(totalGoods - skip) <= DEFAULT_LIMIT ? <></> :<Button onClick={changeLimit}>Show more</Button>}
+       {(totalGoods - skip) <= DEFAULT_LIMIT ? <></> :<Button onClick={changeLimit} type={'button'}>Show more</Button>}
     
     </section>
     )

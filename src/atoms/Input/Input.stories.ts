@@ -14,7 +14,6 @@ const meta: Meta<typeof Input> = {
   
   export const Primary: Story = {
     args: {
-        primary: true,
       }
   };
 

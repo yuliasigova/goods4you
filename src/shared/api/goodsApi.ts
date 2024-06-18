@@ -12,8 +12,8 @@ export const goodsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: `${API_URL}`,
     }), 
-    endpoints: bilder => ({
-        goodsList: bilder.query<IGoodsList, IParam>({
+    endpoints: build => ({
+        goodsList: build.query<IGoodsList, IParam>({
             query: (param) => {
                 const {skip, limit, q} = param
                 return {
@@ -23,21 +23,32 @@ export const goodsApi = createApi({
             },
             providesTags: ['Products']
         }),
-        getProduct: bilder.query<IProductDetails, number>({
+        getProduct: build.query<IProductDetails, number>({
             query: (id) =>({
                 url: `/products/${id}`
             }),
             providesTags: ['Products']
         }),
-        getCartByUser: bilder.query<ICartDetails, number>({
+        getCartByUser: build.query<ICartDetails, number>({
             query: (id) =>({
                 url: `/carts/user/${id}`
             }),
             providesTags: ['Carts'],
             
-        })
+        }),
+        updateCart: build.mutation({
+            query: (body) => {
+                const {id, data} = body
+                return {
+                    url: `carts/${id}`,
+                    headers: {'Content-Type': 'application/json'},
+                    method: 'PATCH',
+                    body: data,
+                }
+            },
+        }),
     })
 })
 
 
-export const {useGoodsListQuery, useGetProductQuery, useGetCartByUserQuery} = goodsApi
+export const {useGoodsListQuery, useGetProductQuery, useGetCartByUserQuery, useUpdateCartMutation} = goodsApi
