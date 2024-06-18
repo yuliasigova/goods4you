@@ -16,7 +16,7 @@ export const SearchBar = ({value, onChange, onClick}: ISearchBar) => {
         <div className={style.searchBar}>
         <Input  value={value} onChange={onChange} 
         placeholder={'Search by title'} 
-        aria={'Enter a search value'}/>
+        aria={'Enter a search value'} name={'search'}/>
         <Button onClick={onClick} type={'button'}> Search</Button>
         </div>
     )
