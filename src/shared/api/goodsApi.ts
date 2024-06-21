@@ -4,13 +4,21 @@ import { IGoodsList } from '../types/ProductTypes';
 import { ICartDetails } from '../types/CartTypes';
 import { IParam } from '../types/ParamTypes';
 
-export const API_URL = 'https://dummyjson.com';
+export const API_URL = 'https://dummyjson.com/';
 
 export const goodsApi = createApi({
     reducerPath: 'goodsApi',
     tagTypes: ['Products', 'Carts'],
     baseQuery: fetchBaseQuery({
         baseUrl: `${API_URL}`,
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem('token')
+            if (token) {
+              headers.set('Authorization', `Bearer ${token}`)
+            }  
+            headers.set('Content-Type', 'application/json')
+            return headers
+          },
     }), 
     endpoints: build => ({
         goodsList: build.query<IGoodsList, IParam>({
@@ -33,8 +41,6 @@ export const goodsApi = createApi({
             query: (id) =>({
                 url: `/carts/user/${id}`
             }),
-            providesTags: ['Carts'],
-            
         }),
         updateCart: build.mutation({
             query: (body) => {
@@ -42,7 +48,7 @@ export const goodsApi = createApi({
                 return {
                     url: `carts/${id}`,
                     headers: {'Content-Type': 'application/json'},
-                    method: 'PATCH',
+                    method: 'PUT',
                     body: data,
                 }
             },

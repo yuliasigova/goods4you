@@ -8,6 +8,8 @@ import CartIcon  from '../../shared/assets/svg/cart.svg?react'
 import { IProductDetails } from '../../shared/types/ProductTypes';
 import { useQuantity } from '../../shared/hooks/useQuantity';
 import { useUpdateCartMutation } from '../../shared/api/goodsApi';
+import {  selectProduct } from '../../shared/slice/CartSlice';
+import {  useSelector } from 'react-redux';
 
 type  ProductPreviewProps = {
     product: IProductDetails;
@@ -15,32 +17,16 @@ type  ProductPreviewProps = {
 
 export const ProductPreview = ({product}:ProductPreviewProps ) => {
     const {id, title, price, images} = product
-    const { isVisual, value} = useQuantity(id)
+    const { isVisual, value, addProduct} = useQuantity(id, product)
     const [isCart, setIsCart] = useState(isVisual)
     const [count, setCount] = useState(value)
-    const dataCart = {
-        merge: true,
-        products: [
-            {id: id,
-            quantity: 1
-            }
-        ]
-    }
-    const [updateCart, {data}] = useUpdateCartMutation()
-    
-    console.log(data)
    
-    const req = async() => {
-        await updateCart({id: 8, data: dataCart})
-    }
-
-
     const navigate = useNavigate()
    
-    const handleButtonClick = () => {
+    const handleButtonClick = async() => {
         setIsCart(!isCart)
         setCount(1)
-        req()
+         await addProduct()
     }
 
     return (
@@ -57,7 +43,7 @@ export const ProductPreview = ({product}:ProductPreviewProps ) => {
             <p onClick={() => navigate(`product/${id}`)}>{price} $ </p>
             </div>
 
-            {isCart ? <Count quantity = {count}/> : 
+            {isCart ? <Count quantity = {count} product = {product}/> : 
              <IconButton aria={"Добавить товар в корзину"} onClick={handleButtonClick}>
                 <CartIcon/>
          </IconButton>}

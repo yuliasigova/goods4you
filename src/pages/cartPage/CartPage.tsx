@@ -32,13 +32,15 @@ export const CartPage = () => {
         <main className={style.cart}>
             <h1 className={style.title}>My cart</h1>
             <section className={style.wrapper}>
+
+              { products.length >0 ? 
                 <ul className={style.list}>
                     {products?.map(item => 
                          <li key={item.id}> 
                          <CartItem product={item}/>
                      </li>
                     )}
-                </ul>
+                </ul> : <p>Ничего не добавлено</p>}
                 <div className={style.total}>
                     <div className={style.count}>
                         <p>Total count:</p>

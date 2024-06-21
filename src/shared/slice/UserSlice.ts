@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { createSlice, isAnyOf } from '@reduxjs/toolkit'
+import { userApi } from '../api/userApi'
 
 interface IAuthState {
   userId: number | null
@@ -8,21 +8,22 @@ interface IAuthState {
 
 const userSlice = createSlice({
   name: 'auth',
-  initialState: { userId: null, token: null } as IAuthState,
+  initialState: { userId: null, token: null, } as IAuthState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(
-      api.endpoints.login.matchFulfilled,
+      isAnyOf(userApi.endpoints.getUser.matchFulfilled),
       (state, { payload }) => {
-        state.token = payload.token
-        state.user = payload.user
+        state.userId = payload.id
       },
     )
   },
   selectors: {
     selectUser: state => state.userId,
-},
+    selectToken: state => state.token
+  }
 })
 
+export const {selectUser, selectToken} = userSlice.selectors
 
 export default userSlice.reducer

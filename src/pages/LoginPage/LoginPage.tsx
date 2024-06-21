@@ -2,18 +2,30 @@ import { useState, FormEvent} from "react"
 import { Input } from "../../atoms/Input/Input"
 import { Button } from "../../atoms/Button/Button"
 import style from './Login.module.scss'
-
-interface ILoginRequest {
-    username: string
-    password: string,
-    expiresInMins: number
-  }
+import { ILoginRequest } from "../../shared/types/UserTypes"
+import logo from '../../shared/assets/img/logo.svg'
+import headerStyle from '../../components/header/header.module.scss'
+import { useLoginMutation } from "../../shared/api/userApi"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 export const LoginPage = () => {
+    const [login] = useLoginMutation()
+    const navigate = useNavigate()
+    const token = localStorage.getItem('token')
+   
+    useEffect(() => {
+         if (token) {
+        navigate('/')
+    }
+    }, [token])
+        
+    
+
     const [formState, setFormState] = useState<ILoginRequest>({
-        username: '',
-        password: '',
-        expiresInMins: 5,
+        username: 'chloem',
+        password: 'chloempass',
+        expiresInMins: 1,
       })
 
     const handleChange = ({
@@ -21,12 +33,25 @@ export const LoginPage = () => {
       }: React.ChangeEvent<HTMLInputElement>) =>
         setFormState((prev) => ({ ...prev, [name]: value }))
    
-      const handleFormSubmit = (evt:FormEvent<HTMLFormElement>) => {
+      const handleFormSubmit = async (evt:FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-        console.log(formState)
+     
+        try {
+            await login(formState).unwrap()
+            navigate('/');
+            
+          } catch (err) {
+            console.log(err)
+          } 
       };
 
+     
+
     return (
+        <>
+          <header className={headerStyle.header}>
+        <img src={logo} width={162} height={40} alt="Логотип: Goods4you"></img>
+        </header>
         <main className={style.login}>
             <h1 className={style.loginTitle}>Login</h1>
             <form className={style.loginForm} method="post" action="#" onSubmit={handleFormSubmit}>
@@ -42,5 +67,7 @@ export const LoginPage = () => {
                 <Button type="submit"> Login </Button>
             </form>
         </main>
+        </>
+      
     )
 }
