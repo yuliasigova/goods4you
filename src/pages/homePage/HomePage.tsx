@@ -5,12 +5,11 @@ import { Faq } from '../../components/faq/Faq'
 import { useGetCartByUserQuery } from '../../shared/api/goodsApi'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../shared/slice/UserSlice'
-import { skipToken } from '@reduxjs/toolkit/query/react'
 
 export const HomePage = () => {
     const userId = useSelector(selectUser)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data:cart, isSuccess} = useGetCartByUserQuery(userId ?? skipToken)
+    const {data} = useGetCartByUserQuery(userId)
 
     return (
         <main>

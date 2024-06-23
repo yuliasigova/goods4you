@@ -16,6 +16,13 @@ const userSlice = createSlice({
       (state, { payload }) => {
         state.userId = payload.id
       },
+    ),
+    builder.addMatcher(
+      isAnyOf(userApi.endpoints.login.matchFulfilled),
+      (state, { payload }) => {
+        state.userId = payload.id
+        state.token = payload.token
+      },
     )
   },
   selectors: {

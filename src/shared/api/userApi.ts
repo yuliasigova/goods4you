@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_URL } from './goodsApi';
 import { ILoginRequest, IUser } from '../types/UserTypes';
 import { BaseQueryApi, FetchArgs } from '@reduxjs/toolkit/query/react';
+import { redirect } from 'react-router-dom';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: API_URL,
@@ -21,6 +22,7 @@ const baseQuery = fetchBaseQuery({
     if (result.error && result.error.status === 401) {
       console.log('Token has expired or is invalid');
       localStorage.removeItem('token');
+      redirect('/login')
     }
   
     return result;

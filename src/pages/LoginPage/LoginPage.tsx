@@ -6,38 +6,40 @@ import { ILoginRequest } from "../../shared/types/UserTypes"
 import logo from '../../shared/assets/img/logo.svg'
 import headerStyle from '../../components/header/header.module.scss'
 import { useLoginMutation } from "../../shared/api/userApi"
-import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useNavigate, Navigate } from "react-router-dom"
 
 export const LoginPage = () => {
-    const [login, {isLoading, isError}] = useLoginMutation()
+    const [login, {isLoading}] = useLoginMutation()
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
-   
-    useEffect(() => {
-         if (token) {
-        navigate('/')
-    }
-    }, [token])
-        
-    
-
+    const [error, setError] = useState<string | null>(null)
     const [formState, setFormState] = useState<ILoginRequest>({
         username: 'chloem',
         password: 'chloempass',
         expiresInMins: 1,
       })
 
+
+      if (token) {
+        return <Navigate to={'/'} />;
+      }
+
     const handleChange = ({
-        target: { name, value },
-      }: React.ChangeEvent<HTMLInputElement>) =>
+      target: { name, value },}: React.ChangeEvent<HTMLInputElement>) => {
         setFormState((prev) => ({ ...prev, [name]: value }))
+        setError(null);
+      }
    
       const handleFormSubmit = async (evt:FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-        await login(formState).unwrap()
-        navigate('/');
-      };
+        try {
+          await login(formState).unwrap()
+          navigate('/');
+      } catch (err) {
+          setError('Something went wrong. Please, try again.');
+      }
+       
+    };
 
      
 
@@ -58,7 +60,9 @@ export const LoginPage = () => {
                     placeholder={'Password'} 
                     aria={'Enter password'}
                     name={'password'} type={'password'}/>
-                    {isError ? <p>Something went wrong. Please, try again.</p> : <></>}
+                    {error ? 
+                    <p className={style.loginError}>
+                      {error}</p> : <></>}
                 <Button type="submit" disabled={isLoading}> Login </Button>
             </form>
         </main>
