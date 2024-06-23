@@ -12,7 +12,7 @@ export const useQuantity = (product:IProductDetails) => {
     const loading = isLoading;
 
     const addProduct = async() => {
-           await updateCart({ id: cartId, data: {merge: false, products: [...products, product]}});
+        await updateCart({ id: cartId, data: {merge: false, products: [...products, product]}});
     }
 
     const incrementProduct = async() => {

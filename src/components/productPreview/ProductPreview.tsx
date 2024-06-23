@@ -18,7 +18,7 @@ export const ProductPreview = ({product}:ProductPreviewProps ) => {
     const navigate = useNavigate()
    
     const handleButtonClick = async() => {
-         await addProduct()
+         await addProduct() 
     }
 
     return (

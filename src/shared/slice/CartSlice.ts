@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf} from "@reduxjs/toolkit";
 import { ICartIInfo } from "../types/CartTypes";
 import { goodsApi } from "../api/goodsApi";
+import {toast} from 'react-toastify'
 
 const initialState = {
     carts: {} as ICartIInfo
@@ -19,11 +20,17 @@ export const cartSlice = createSlice({
                 state.carts = payload.carts[0]
             }
           );
-          builder.addMatcher(
+        builder.addMatcher(
             isAnyOf(goodsApi.endpoints.updateCart.matchFulfilled), 
             (state, {payload}) => {
                state.carts = payload
-    });
+        });
+        builder.addMatcher(
+            isAnyOf(goodsApi.endpoints.updateCart.matchRejected), 
+            () => {
+                toast.error("Something went wrong. Please, try again.", {position: "top-center", autoClose: 2000,})
+            }
+        );
     },
     selectors: {
         selectProduct: state => state.carts.products,

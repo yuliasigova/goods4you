@@ -20,7 +20,6 @@ const baseQuery = fetchBaseQuery({
     const result = await baseQuery(args, api, extraOptions);
 
     if (result.error && result.error.status === 401) {
-      console.log('Token has expired or is invalid');
       localStorage.removeItem('token');
       redirect('/login')
     }

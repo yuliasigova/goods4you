@@ -7,12 +7,12 @@ import logo from '../../shared/assets/img/logo.svg'
 import headerStyle from '../../components/header/header.module.scss'
 import { useLoginMutation } from "../../shared/api/userApi"
 import { useNavigate, Navigate } from "react-router-dom"
+import {toast} from 'react-toastify'
 
 export const LoginPage = () => {
     const [login, {isLoading}] = useLoginMutation()
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
-    const [error, setError] = useState<string | null>(null)
     const [formState, setFormState] = useState<ILoginRequest>({
         username: 'chloem',
         password: 'chloempass',
@@ -27,7 +27,6 @@ export const LoginPage = () => {
     const handleChange = ({
       target: { name, value },}: React.ChangeEvent<HTMLInputElement>) => {
         setFormState((prev) => ({ ...prev, [name]: value }))
-        setError(null);
       }
    
       const handleFormSubmit = async (evt:FormEvent<HTMLFormElement>) => {
@@ -35,14 +34,12 @@ export const LoginPage = () => {
         try {
           await login(formState).unwrap()
           navigate('/');
-      } catch (err) {
-          setError('Something went wrong. Please, try again.');
-      }
+        } catch(err) {
+        toast.error("Something went wrong. Please, try again.", {position: "top-center", autoClose: 2000,})
+       }
+      
+    }
        
-    };
-
-     
-
     return (
         <>
           <header className={headerStyle.header}>
@@ -60,9 +57,6 @@ export const LoginPage = () => {
                     placeholder={'Password'} 
                     aria={'Enter password'}
                     name={'password'} type={'password'}/>
-                    {error ? 
-                    <p className={style.loginError}>
-                      {error}</p> : <></>}
                 <Button type="submit" disabled={isLoading}> Login </Button>
             </form>
         </main>
