@@ -37,7 +37,7 @@ export const goodsApi = createApi({
             }),
             providesTags: ['Products']
         }),
-        getCartByUser: build.query<ICartDetails, number>({
+        getCartByUser: build.query<ICartDetails, number | null>({
             query: (id) =>({
                 url: `/carts/user/${id}`
             }),

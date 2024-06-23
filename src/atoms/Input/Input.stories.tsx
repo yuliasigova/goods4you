@@ -14,6 +14,19 @@ const meta: Meta<typeof Input> = {
   
   export const Primary: Story = {
     args: {
+      aria: 'Enter a search value',
+      placeholder: 'Search by title',
+      name: 'search',
+      type: 'text'
+      }
+  };
+
+  export const Password: Story = {
+    args: {
+      aria: 'Enter password',
+      placeholder: 'Password',
+      name: 'password',
+      type: 'password'
       }
   };
 

@@ -4,13 +4,15 @@ import { IProductDetails } from '../../shared/types/ProductTypes'
 import { selectCart } from '../../shared/slice/CartSlice'
 import { useSelector } from 'react-redux'
 import { useGetCartByUserQuery } from '../../shared/api/goodsApi'
+import { selectUser } from '../../shared/slice/UserSlice'
 
 export const CartPage = () => {
     const cart = useSelector(selectCart)
+    const userId = useSelector(selectUser)
     const products:Array<IProductDetails> = cart.products 
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data, isLoading, isError} = useGetCartByUserQuery(23)
+    const {data, isLoading, isError} = useGetCartByUserQuery(userId)
 
 
     if (isLoading) {
@@ -33,14 +35,16 @@ export const CartPage = () => {
             <h1 className={style.title}>My cart</h1>
             <section className={style.wrapper}>
 
-              { products.length >0 ? 
+              {products && products.length ? 
+              <>
                 <ul className={style.list}>
                     {products?.map(item => 
                          <li key={item.id}> 
                          <CartItem product={item}/>
                      </li>
                     )}
-                </ul> : <p>Ничего не добавлено</p>}
+                </ul> 
+               
                 <div className={style.total}>
                     <div className={style.count}>
                         <p>Total count:</p>
@@ -48,13 +52,15 @@ export const CartPage = () => {
                     </div>
                     <div className={style.price}>
                         <p>Total price:</p>
-                        <span>{cart.total}$</span>
+                        <span>{cart.total.toFixed(2)}$</span>
                     </div>
                     <div className={style.discount}>
                         <p>Total price with discount:</p>
                         <span>{cart.discountedTotal}$</span>
                     </div> 
                 </div>
+                </> :
+                 <p className={style.infoText}> Add items to your cart </p>}
             </section>
             </main>
     )

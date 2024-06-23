@@ -1,5 +1,6 @@
 import { useGetUserQuery } from '../shared/api/userApi';
 import { Navigate, useLocation } from 'react-router-dom';
+import { LoadingPage } from '../pages/LoadingPage/LoadingPage';
 
 type PrivateRouteProps = {
   children: JSX.Element;
@@ -8,15 +9,15 @@ type PrivateRouteProps = {
 export const PrivateRoute = ({children}:PrivateRouteProps)=>  {
     const token = localStorage.getItem('token')
 
-    const { data: user , isLoading} = useGetUserQuery(undefined, {
+    const { data: user , isLoading} = useGetUserQuery(undefined,{
         skip: !token,
       });
 
     const location = useLocation();
    
- console.log(!token)
+ 
   if (isLoading ) {
-    return <p>Loading</p>
+    return <LoadingPage/>
   }
 
   if (!token) {
@@ -25,14 +26,14 @@ export const PrivateRoute = ({children}:PrivateRouteProps)=>  {
 
   return children;
     
-//   return (
-//     <>
-//     {isSuccess
-//       ? children
-//       : <Navigate to={'/login'} />}
-//       </>
+  // return (
+  //   <>
+  //   {isLoading
+  //     ? children
+  //     : <Navigate to={'/login'} />}
+  //     </>
     
-//   );
+  // );
     
    
 }

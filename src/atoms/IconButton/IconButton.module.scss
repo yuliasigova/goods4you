@@ -22,6 +22,11 @@
     &:focus {
         background-color: $color-mandarian-orange; 
     }
+
+    &:disabled {
+        opacity: 0.8; 
+        pointer-events: none; 
+    }
 }
 
 .iconButtonSecond {

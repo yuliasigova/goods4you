@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import style from './preview.module.scss'
-import { Count } from '../../molecules/Count/Count';
 import { useNavigate } from 'react-router-dom';
 import CartIcon  from '../../shared/assets/svg/cart.svg?react'
 import { IProductDetails } from '../../shared/types/ProductTypes';
 import { useQuantity } from '../../shared/hooks/useQuantity';
-import { useUpdateCartMutation } from '../../shared/api/goodsApi';
-import {  selectProduct } from '../../shared/slice/CartSlice';
-import {  useSelector } from 'react-redux';
+import { CountWrapper } from '../CountWrapper/CountWrapper';
 
 type  ProductPreviewProps = {
     product: IProductDetails;
@@ -17,15 +13,11 @@ type  ProductPreviewProps = {
 
 export const ProductPreview = ({product}:ProductPreviewProps ) => {
     const {id, title, price, images} = product
-    const { isVisual, value, addProduct} = useQuantity(id, product)
-    const [isCart, setIsCart] = useState(isVisual)
-    const [count, setCount] = useState(value)
-   
+    const {addProduct} = useQuantity(product)
+    
     const navigate = useNavigate()
    
     const handleButtonClick = async() => {
-        setIsCart(!isCart)
-        setCount(1)
          await addProduct()
     }
 
@@ -42,11 +34,11 @@ export const ProductPreview = ({product}:ProductPreviewProps ) => {
             </h3>
             <p onClick={() => navigate(`product/${id}`)}>{price} $ </p>
             </div>
-
-            {isCart ? <Count quantity = {count} product = {product}/> : 
-             <IconButton aria={"Добавить товар в корзину"} onClick={handleButtonClick}>
+            <CountWrapper product={product} primary={true}>
+                <IconButton aria={"Добавить товар в корзину"} onClick={handleButtonClick} disabled={false}>
                 <CartIcon/>
-         </IconButton>}
+         </IconButton>
+         </CountWrapper>
            </div>
         </article>
     )

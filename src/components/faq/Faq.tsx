@@ -5,13 +5,13 @@ import { IconButton } from '../../atoms/IconButton/IconButton'
 
 const faq = [
     {
-    id: 1,
-    title: 'Question 1',
-    content: 'Long answer to the first question'},
+        id: 1,
+        title: 'Question 1',
+        content: 'Long answer to the first question'},
     {
         id: 2,
         title: 'Question 2',
-        content: 'Long answer to the first question'
+        content: 'Long answer to the second question'
     },
 ]
 
@@ -24,9 +24,9 @@ export const Faq = () => {
         } else 
         setOpenQuestion([...openQuestion, i])
     }
-    
+
     return (
-        <section className={style.faq} id={'faq'}>
+        <section className={style.faq} id={'faq'} aria-label={'faq'}>
               <div className={style.accordion}>
             <h2>FAQ</h2>
             {faq.map(item => 
@@ -36,7 +36,7 @@ export const Faq = () => {
                 <h3 className={style.title}> {item.title}</h3>
                 <p className={openQuestion.includes(item.id)? style.contentActive : style.content}> 
                 {item.content} </p>
-             < IconButton primary={false}  
+             <IconButton primary={false}  disabled={false}
              aria={'Открыть или закрыть описание'}>
              <IconClose className={openQuestion.includes(item.id) ? style.svgActive : style.svg} />
              </IconButton>

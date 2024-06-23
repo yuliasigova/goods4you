@@ -4,24 +4,20 @@ import { IProductDetails } from '../../shared/types/ProductTypes';
 import { discountPrice } from '../../shared/utils/price';
 import { getRating } from '../../shared/utils/rating';
 import { useQuantity } from '../../shared/hooks/useQuantity';
-import { Count } from '../../molecules/Count/Count';
-import { useState } from 'react';
+import { CountWrapper } from '../CountWrapper/CountWrapper';
 
 type ProductDescriptionProp = {
   product: IProductDetails
 }
 
 export const ProductDescription = ({product}:ProductDescriptionProp) => {
-  const {id, title, sku,  rating, price, discountPercentage,  stock, brand, category, description} = product
-  const { isVisual, value} = useQuantity(id)
-  const [isCart, setIsCart] = useState(isVisual)
-  const [count, setCount] = useState(value)
+  const {title, sku,  rating, price, discountPercentage,  stock, brand, category, description} = product
+  const { addProduct} = useQuantity(product)
 
   const priceWithDiscount = discountPrice(price, discountPercentage)
 
-  const handleButtonClick = () => {
-    setIsCart(!isCart)
-    setCount(1)
+  const handleButtonClick = async() => {
+    await addProduct()
 }
   return (
     <div className={style.description}>
@@ -36,7 +32,7 @@ export const ProductDescription = ({product}:ProductDescriptionProp) => {
         <dl className={style.content}>
           <div className={style.info}>
             <dt>Rating</dt>
-            <dd className={style.rating} style={{width: `${getRating(rating)}px`}}></dd>
+            <dd className={style.rating} style={{width: `${getRating(Math.round(rating))}px`}}></dd>
           </div>
           <div className={style.info}>
             <dt>Base price</dt>
@@ -74,10 +70,9 @@ export const ProductDescription = ({product}:ProductDescriptionProp) => {
           </div>
         </dl>
 
-        {isCart ? <Count primary = {false} quantity = {count}/> : 
-             
-                <Button onClick={handleButtonClick}>Add to cart</Button>
-        }
+          <CountWrapper primary={false} product={product}>
+          <Button onClick={handleButtonClick} type='button'>Add to cart</Button>
+          </CountWrapper>
         
     </div>
   )

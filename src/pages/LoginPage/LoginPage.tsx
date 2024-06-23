@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
 export const LoginPage = () => {
-    const [login] = useLoginMutation()
+    const [login, {isLoading, isError}] = useLoginMutation()
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
    
@@ -35,14 +35,8 @@ export const LoginPage = () => {
    
       const handleFormSubmit = async (evt:FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-     
-        try {
-            await login(formState).unwrap()
-            navigate('/');
-            
-          } catch (err) {
-            console.log(err)
-          } 
+        await login(formState).unwrap()
+        navigate('/');
       };
 
      
@@ -55,7 +49,7 @@ export const LoginPage = () => {
         <main className={style.login}>
             <h1 className={style.loginTitle}>Login</h1>
             <form className={style.loginForm} method="post" action="#" onSubmit={handleFormSubmit}>
-                <Input  value={formState.username} 
+                <Input  value={formState.username} type={'text'}
                 onChange={handleChange} 
                     placeholder={'Login'} 
                     aria={'Enter username'}
@@ -63,8 +57,9 @@ export const LoginPage = () => {
                 <Input  value={formState.password} onChange={handleChange} 
                     placeholder={'Password'} 
                     aria={'Enter password'}
-                    name={'password'}/>
-                <Button type="submit"> Login </Button>
+                    name={'password'} type={'password'}/>
+                    {isError ? <p>Something went wrong. Please, try again.</p> : <></>}
+                <Button type="submit" disabled={isLoading}> Login </Button>
             </form>
         </main>
         </>

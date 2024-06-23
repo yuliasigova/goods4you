@@ -11,7 +11,7 @@ export interface ICartIInfo {
 }
 
 export interface ICartDetails  {
-    carts: ICartIInfo,
+    carts: Array<ICartIInfo>,
     total?: number
 }
 

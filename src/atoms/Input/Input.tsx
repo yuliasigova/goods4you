@@ -6,15 +6,16 @@ interface IInput {
     aria: string,
     placeholder: string,
     name: string,
+    type: string
     onChange: (evt:ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({value, aria, placeholder, name, onChange}: IInput) => {
+export const Input = ({value, aria, placeholder, name, type, onChange}: IInput) => {
     return (
          <label className={style.input} 
          aria-label={aria}>
         <input aria-label={aria}
-        type={'text'} name={name} value={value} placeholder={placeholder} onChange={onChange}/>
+        type={type} name={name} value={value} placeholder={placeholder} onChange={onChange}/>
         </label>
     )
 }
