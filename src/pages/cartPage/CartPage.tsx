@@ -3,33 +3,11 @@ import { CartItem } from '../../components/cartItem/CartItem'
 import { IProductDetails } from '../../shared/types/ProductTypes'
 import { selectCart } from '../../shared/slice/CartSlice'
 import { useSelector } from 'react-redux'
-import { useGetCartByUserQuery } from '../../shared/api/goodsApi'
-import { selectUser } from '../../shared/slice/UserSlice'
 
 export const CartPage = () => {
     const cart = useSelector(selectCart)
-    const userId = useSelector(selectUser)
     const products:Array<IProductDetails> = cart.products 
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data, isLoading, isError} = useGetCartByUserQuery(userId)
-
-
-    if (isLoading) {
-        return (
-            <main className={style.cart}>
-              <p className={style.title}>Loading...</p>   
-            </main>
-       )
-    }
-
-    if (isError) {
-        return (
-            <main className={style.cart}>
-              <p className={style.title}>Something went wrong</p>   
-            </main>
-       )
-    }
     return (
         <main className={style.cart}>
             <h1 className={style.title}>My cart</h1>

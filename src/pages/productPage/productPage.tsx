@@ -2,16 +2,14 @@ import style from './product.module.scss'
 import { Slider } from '../../components/slider/Slider'
 import { ProductDescription } from '../../components/productDescription/ProductDescription'
 import { useParams } from 'react-router-dom'
-import { useGetProductQuery, useGetCartByUserQuery } from '../../shared/api/goodsApi'
+import { useGetProductQuery } from '../../shared/api/goodsApi'
 import { IProductDetails } from '../../shared/types/ProductTypes'
 
 export const ProductPage = () => {
     const {productId} = useParams()
     const id = Number(productId)
     const {data, isLoading, isError } = useGetProductQuery(id)
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data:cart} = useGetCartByUserQuery(23)
+   
     if (isLoading) {
         return (
             <main className={style.product}>

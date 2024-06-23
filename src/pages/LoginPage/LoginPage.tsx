@@ -16,7 +16,7 @@ export const LoginPage = () => {
     const [formState, setFormState] = useState<ILoginRequest>({
         username: 'chloem',
         password: 'chloempass',
-        expiresInMins: 1,
+        expiresInMins: 10,
       })
 
 

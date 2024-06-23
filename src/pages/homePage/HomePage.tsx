@@ -2,15 +2,8 @@ import style from '../homePage/home.module.scss'
 import { Button } from '../../atoms/Button/Button'
 import { Catalog } from '../../components/catalog/Catalog'
 import { Faq } from '../../components/faq/Faq'
-import { useGetCartByUserQuery } from '../../shared/api/goodsApi'
-import { useSelector } from 'react-redux'
-import { selectUser } from '../../shared/slice/UserSlice'
 
 export const HomePage = () => {
-    const userId = useSelector(selectUser)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data} = useGetCartByUserQuery(userId)
-
     return (
         <main>
             <section className={style.description}>
