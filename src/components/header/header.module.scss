@@ -1,0 +1,108 @@
+@import '../../app/styles/variables.module.scss';
+
+.header {
+    background: $color-dark-slate-blue;
+    min-height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px max(20px, (100vw - 1180px)/2);
+    gap: 2rem;
+
+    @media (max-width: $vp-768) {
+        padding-top: 10px;  
+        padding-bottom: 10px;
+        min-height: 50px;
+    }
+
+    &__home {
+        @extend .header;
+        padding-top: 17px;
+        padding-bottom: 9px;
+        min-height: 64px;
+    }   
+
+    a:focus img {
+        opacity: 0.8;
+    }
+
+    @media (hover: hover) {
+        a:hover img {
+            opacity: 0.8;
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1 1 500px;
+    color: $color-default-white;
+
+    @media (max-width: $vp-768) {
+         justify-content: flex-start;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;  
+        align-items: center;
+    }
+
+    li {
+        margin-right: 34px;
+        min-height: 24px;
+        display: flex;
+        align-items: center;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    a {
+        font-size: 14px;
+        line-height: 20.23px;
+        font-weight: 600;
+        color: inherit;
+        display: flex;
+        transition: color $trans-default;
+
+        &:focus, 
+        &:hover {
+            color: $color-silver;
+            text-decoration: underline; 
+        }
+    } 
+
+}
+
+.link {
+    align-items: center;
+
+    .cart {
+        display: flex;
+        position: relative;
+        width: 23px;
+        height: 24px;
+        margin-left: 8px;
+    }
+     
+    span {
+        color: inherit;
+        background-color: $color-sunset-orange;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        font-size: 8px;
+        bottom: 0;
+        right: 0;
+
+    }
+}

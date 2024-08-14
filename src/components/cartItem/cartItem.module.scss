@@ -1,0 +1,56 @@
+@import '../../app/styles/variables.module.scss';
+
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+
+    a {
+        display: flex;
+        margin-right: 10px;
+        width: 100px;
+        height: 57px;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: inherit;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        font-size: 1.125rem;
+        cursor: pointer;
+    }
+}
+
+.button {
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 20.23px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    color: $color-mischka;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+            text-decoration: underline;
+        }
+}

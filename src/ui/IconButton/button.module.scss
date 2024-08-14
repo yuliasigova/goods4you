@@ -1,0 +1,25 @@
+@import '../../app/styles/variables.module.scss';
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 48px;
+    min-height: 48px;
+    color: $color-default-white;
+    background-color: $color-sunset-orange;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: $fz-default;
+    transition: background-color $trans-default;
+    
+    cursor: pointer;
+    
+    &:hover,
+    &:focus {
+        background-color: $color-mandarian-orange; 
+    }
+}

@@ -1,0 +1,74 @@
+@import '../../app/styles/variables.module.scss';
+
+.preview {
+    width: min(100%, 370px);
+    
+    a {
+        display: block;
+        position: relative;
+        height: min(100%, 293px);
+        border-radius: 4px;
+        margin-bottom: 11px;
+        font-size: 0;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $color-grey--25;
+        opacity: 0;
+        border-radius: 4px;
+        transition: opacity $trans-ease;
+    }
+    }
+
+    a:focus::before {
+        opacity: 1;
+    }
+
+    @media (hover: hover) {
+        a:hover::before {
+            opacity: 1;
+        }
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+        display: block;
+        width: 24px;
+        height: 22px;
+    }
+}
+
+.info {
+    margin-right: 10px;
+    overflow: hidden;
+
+    h3 {
+        font-weight: 600;
+        font-size: inherit;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        transition: text-decoration $trans-default;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        font-size: 1.125rem;
+        cursor: pointer;
+    }
+}

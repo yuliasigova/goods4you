@@ -1,0 +1,60 @@
+@import './fonts.module.scss';
+@import './variables.module.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: $ff-jost;
+  font-size: $fz-default;
+  line-height: 1.4;
+  font-weight: 400;
+  color: $color-tuna;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: $vp-768) {
+    font-size: 0.875rem;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  height: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: none;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}

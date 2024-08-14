@@ -1,0 +1,33 @@
+@import '../../app/styles/variables.module.scss';
+
+
+.description {
+    background: $color-dark-slate-blue;
+    min-height: 464px;
+    padding: 0 max(20px, (100vw - 1180px)/2);
+    color: $color-default-white;
+}
+
+.wrapper {
+    border-top: 1px solid $color-default-white--50;
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 21px;
+    background-image: url('../../shared/assets/img/background.png');
+    background-repeat: no-repeat;
+    background-position-x: 36px;
+    background-position-y: bottom;
+}
+  
+.title {
+    font-size: 2.25em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    width: min(100%, 25ch)
+}
+
+.text {
+    font-weight: 600;
+    margin-bottom: 38px;
+    width: min(100%, 32ch)
+}
