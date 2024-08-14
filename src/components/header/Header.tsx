@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 
 export const Header = () => {
     const location = useLocation();
-    const userId = 23
     const total = useSelector(selectTotal)
 
     const isTotalValue = total > 0 ? 1 : 0
@@ -32,7 +31,7 @@ export const Header = () => {
                     <Link to={'cart'} className={style.link}> Cart
                     <div className={style.cart}>
                         <CartIcon/>
-                        {userId && isTotalValue ? <span>{total}</span> : <></> }
+                        {isTotalValue ? <span>{total}</span> : <></> }
                     </div>
                     </Link>
                 </li>

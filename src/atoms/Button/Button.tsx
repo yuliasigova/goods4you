@@ -1,18 +1,21 @@
 import style from './Button.module.scss'
 
-interface Button  {
+interface IButton  {
     primary?: boolean,
     children: string | React.ReactElement,
+    type: 'button' | 'submit',
+    disabled? :boolean,
     onClick?: () => void,
 }
 
-export const Button = ({primary = true, children, onClick}: Button) => {
+export const Button = (
+    {primary = true, children, type = 'button', onClick, disabled=false}: IButton) => {
 
     const mode = primary ? style.button : style.secondButton
     return (
         <button className={mode} 
-        onClick={onClick} type={'button'}>
-            {children}
+        onClick={onClick} type={type} disabled={disabled}>
+            {children} 
         </button>
     )
 }

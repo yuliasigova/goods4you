@@ -1,5 +1,5 @@
 import { ProductPreview } from "../productPreview/ProductPreview"
-import style from './catalog.module.scss'
+import style from './Catalog.module.scss'
 import { Button } from "../../atoms/Button/Button"
 import { SearchBar } from "../../molecules/SearchBar/SearchBar"
 import { useGoodsListQuery } from "../../shared/api/goodsApi"
@@ -70,7 +70,7 @@ export const Catalog = () => {
         </ul>}
         
 
-       {(totalGoods - skip) <= DEFAULT_LIMIT ? <></> :<Button onClick={changeLimit}>Show more</Button>}
+       {(totalGoods - skip) <= DEFAULT_LIMIT ? <></> :<Button onClick={changeLimit} type={'button'}>Show more</Button>}
     
     </section>
     )

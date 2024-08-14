@@ -4,6 +4,7 @@ import style from './cartItem.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../atoms/Button/Button';
 import { IProductDetails } from '../../shared/types/ProductTypes';
+import { useQuantity } from '../../shared/hooks/useQuantity';
 
 type CartItemProps = {
     product: IProductDetails;
@@ -11,8 +12,9 @@ type CartItemProps = {
 
 export const CartItem = ({product}: CartItemProps) => {
     const {title, thumbnail, price, quantity, id } = product
+    const {deleteProduct} = useQuantity(product)
     const navigate = useNavigate()
-
+    
     return (
         <article className={style.cartItem}>
             <div className={style.wrapper}>
@@ -27,8 +29,8 @@ export const CartItem = ({product}: CartItemProps) => {
                 <p onClick={() => navigate(`/product/${id}`)}>{price} $ </p>
             </div> 
             </div>
-            <Count quantity={quantity}/>
-            <Button primary={false}>Delete</Button>
+           <Count quantity={quantity} product={product} primary={true}></Count>
+            <Button type={'button'} onClick={deleteProduct} primary={false}>Delete</Button>
         </article>
     )
 }

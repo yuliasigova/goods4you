@@ -3,13 +3,19 @@ import { ChangeEvent } from 'react'
 
 interface IInput {
     value: string,
+    aria: string,
+    placeholder: string,
+    name: string,
+    type: string
     onChange: (evt:ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({value, onChange}: IInput) => {
+export const Input = ({value, aria, placeholder, name, type, onChange}: IInput) => {
     return (
-         <label className={style.input} aria-label="Введите значение для поиска">
-        <input aria-label={"Введите значение для поиска"} type={'text'} name={'search'} value={value} placeholder="Search by title" onChange={onChange}/>
+         <label className={style.input} 
+         aria-label={aria}>
+        <input aria-label={aria}
+        type={type} name={name} value={value} placeholder={placeholder} onChange={onChange}/>
         </label>
     )
 }

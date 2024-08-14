@@ -19,10 +19,21 @@ export const Primary: Story = {
 
     render: () => {
        
-        return (<IconButton aria='button'>
+        return (<IconButton aria='button' disabled={false}>
             <IconCart/>
              </IconButton>);
       },
+};
+
+export const Disabled: Story = {
+
+  render: function Render() {
+     
+      return (
+      <IconButton aria='button' disabled={true}>
+            <IconCart/>
+           </IconButton>)
+    },
 };
 
 export const Secondary: Story = {
@@ -30,11 +41,12 @@ export const Secondary: Story = {
   render: function Render() {
      
       return (
-      <IconButton primary={false} aria='button'>
+      <IconButton primary={false} aria='button' disabled={false}>
           <IconClose/>
            </IconButton>)
     },
 };
+
 
 
 

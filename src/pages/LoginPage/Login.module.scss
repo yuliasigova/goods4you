@@ -1,0 +1,44 @@
+@import '../../app/styles/variables.module.scss';
+
+.login {
+    padding: 55px max(20px, (100vw - 1180px)/2) 308px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: $vp-1024) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+.loginTitle {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.875em;
+    margin-bottom: 55px;
+
+    @media (max-width: $vp-1024) {
+        margin-bottom: 30px;
+    }
+}
+
+.loginForm {
+    width: min(100%, 628px);
+    display: flex;
+    flex-direction: column;
+    padding: 60px 46px;
+    border: 1px solid $color-gainsboro;
+    border-radius: 4px;
+    gap: 55px;
+
+    @media (max-width: $vp-768) {
+        padding: 30px 16px;
+        gap: 30px;
+    }
+}
+
+.loginError {
+    margin: 0 auto;
+    color: $color-sunset-orange;
+}
