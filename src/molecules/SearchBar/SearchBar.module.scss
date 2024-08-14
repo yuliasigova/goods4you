@@ -1,0 +1,9 @@
+@import '../../app/styles/variables.module.scss';
+
+.searchBar {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    gap: 20px;
+    justify-content: center;
+}

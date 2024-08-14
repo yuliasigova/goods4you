@@ -7,17 +7,18 @@
         padding-top: 30px;
         padding-bottom: 30px;
     }
+}
 
-    h1 {
-        margin: 0;
-        font-weight: 700;
-        font-size: 1.875em;
-        margin-bottom: 55px;
+.title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.875em;
+    margin-bottom: 55px;
 
-        @media (max-width: $vp-1024) {
-            margin-bottom: 30px;
-        }
+    @media (max-width: $vp-1024) {
+        margin-bottom: 30px;
     }
+
 }
 
 .wrapper {
@@ -81,6 +82,8 @@
 
 .discount {
     font-size: 1.5em;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 
     p {
         font-weight: 600;

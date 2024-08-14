@@ -25,24 +25,6 @@
     cursor: pointer;
     border-top: 1px solid $color-default-white;
     padding: 30px 0 20px;
-
-    button {
-        border: none;
-        width: 25px;
-        height: 25px;
-        display: block;
-        color: $color-default-white;
-        position: absolute;
-        background: none;
-        top: 24px;
-        right: 4px;
-        cursor: pointer;
-        transition: opacity $trans-default;
-
-        &:hover {
-            opacity: 0.8
-        }
-    }
 }
 
 .title {
@@ -64,7 +46,7 @@
     font-weight: 600;
     margin: 16px 0 20px;
     opacity: 1;
-    height: 100%; 
+    height: auto; 
     transition: margin $trans-ease-out, opacity $trans-ease-out, height $trans-ease-out; 
     will-change: margin, opacity, height;
     

@@ -1,6 +1,6 @@
 @import '../../app/styles/variables.module.scss';
 
-.button {
+.iconButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,3 +23,23 @@
         background-color: $color-mandarian-orange; 
     }
 }
+
+.iconButtonSecond {
+    border: none;
+    width: 25px;
+    height: 25px;
+    display: block;
+    color: $color-default-white;
+    position: absolute;
+    background: none;
+    top: 24px;
+    right: 4px;
+    cursor: pointer;
+    transition: opacity $trans-default;
+
+    &:hover {
+        opacity: 0.8
+    }
+    
+}
+
