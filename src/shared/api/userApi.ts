@@ -38,7 +38,7 @@ const baseQuery = fetchBaseQuery({
           body: credentials,
         }),
         transformResponse: (response:IUser) => {
-          localStorage.setItem('token', response.token);
+          localStorage.setItem('token', response.accessToken);
           return response;
         }
       }),

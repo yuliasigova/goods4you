@@ -21,7 +21,7 @@ const userSlice = createSlice({
       isAnyOf(userApi.endpoints.login.matchFulfilled),
       (state, { payload }) => {
         state.userId = payload.id
-        state.token = payload.token
+        state.token = payload.accessToken
       },
     )
   },

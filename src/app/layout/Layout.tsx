@@ -8,8 +8,7 @@ import { selectUser } from '../../shared/slice/UserSlice'
 
 export const Layout = () => {
     const userId = useSelector(selectUser)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {data} = useGetCartByUserQuery(userId)
+     useGetCartByUserQuery(userId)
 
     return  (
         <>
