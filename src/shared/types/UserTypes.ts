@@ -1,6 +1,6 @@
 export interface IUser {
     id: number ,
-    token: string 
+    accessToken: string 
   }
   
   export interface ILoginRequest {

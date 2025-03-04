@@ -9,7 +9,7 @@ const meta: Meta<typeof SearchBar> = {
   };
   export default meta;
 
-  type Story = StoryObj<typeof meta>;
+  type Story = StoryObj<typeof meta> & {args: {primary: boolean}};
   
   export const Primary: Story = {
     args: {
