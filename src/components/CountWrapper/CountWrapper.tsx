@@ -1,4 +1,4 @@
-import { Count } from "../../molecules/Count/Count"
+import { Count } from "../../molecules/count/Count"
 import { IProductDetails } from "../../shared/types/ProductTypes"
 import { selectProduct } from "../../shared/slice/CartSlice"
 import { useSelector } from "react-redux"
